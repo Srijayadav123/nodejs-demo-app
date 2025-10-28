@@ -1,14 +1,14 @@
 {
-  "name": "nodejs-demo-app",
+  "name": "simple-node-app",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Running tests...\" && exit 0"
+    "start": "node app.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.19.2"
   }
 }
+
 
 
