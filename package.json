@@ -1,15 +1,16 @@
 {
-  "name": "simple-node-app",
+  "name": "simple-calc-app",
   "version": "1.0.0",
   "main": "app.js",
+  "type": "commonjs",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"No tests yet\" && exit 0"
+    "start": "node app.js"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.18.2"
   }
 }
+
 
 
 
