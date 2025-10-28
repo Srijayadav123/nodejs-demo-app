@@ -2,28 +2,41 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Home route
+// Middleware to parse JSON body
+app.use(express.json());
+
+// Simple calculator route
+app.post("/calculate", (req, res) => {
+  const { num1, num2, operation } = req.body;
+
+  let result;
+
+  switch (operation) {
+    case "add":
+      result = num1 + num2;
+      break;
+    case "subtract":
+      result = num1 - num2;
+      break;
+    case "multiply":
+      result = num1 * num2;
+      break;
+    case "divide":
+      result = num2 !== 0 ? num1 / num2 : "Error: Division by zero";
+      break;
+    default:
+      return res.status(400).json({ error: "Invalid operation" });
+  }
+
+  res.json({ num1, num2, operation, result });
+});
+
 app.get("/", (req, res) => {
-  res.send("🚀 Welcome to My Simple Node.js App!");
+  res.send("🧮 Welcome to Simple Calculator API!");
 });
 
-// About route
-app.get("/about", (req, res) => {
-  res.send("This is a demo Node.js app running in Docker with CI/CD!");
-});
-
-// API route
-app.get("/api", (req, res) => {
-  res.json({
-    message: "Hello from the API endpoint!",
-    status: "success",
-    version: "1.0.0",
-  });
-});
-
-// Start server
 app.listen(PORT, () => {
-  console.log(`✅ Server is running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
 
 
